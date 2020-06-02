@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "sourceMap": false,
+    "target": "es6",
+    "module": "commonjs",
+    "outDir": "./build/server",
+    "baseUrl": "./src",
+    "esModuleInterop": true
+  },
+  "include": ["src/**/*.ts"],
+  "exclude": ["node_modules, build"]
+}
