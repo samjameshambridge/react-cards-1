@@ -4,12 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "install": "npm i && (cd src/client && npm i)",
     "build": "tsc",
     "git": "git add *; git commit -am 'commit'",
     "lint": "eslint './src/server/**/*.ts'",
     "start": "node ./build/server/server.js",
-    "heroku-postbuild": "cd src/client && npm run build"
+    "heroku-postbuild": "cd src/client && npm i && npm run build"
   },
   "author": "",
   "license": "ISC",
