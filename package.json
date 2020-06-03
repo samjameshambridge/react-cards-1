@@ -8,8 +8,8 @@
     "git": "git add *; git commit -am 'commit'",
     "lint": "eslint './src/server/**/*.ts'",
     "start": "node ./build/server/server.js",
-    "postinstall": "cd src/client/app && npm install",
-    "postbuild": "cd src/client && npm run build"
+    "postinstall": "cd src/client && npm install",
+    "postbuild": "cd src/client/app && npm run build"
   },
   "author": "",
   "license": "ISC",
