@@ -4,7 +4,7 @@ const path = require("path");
 const webpack = require("webpack");
 
 module.exports = {
-  entry: path.resolve(_dirname, "./app/index.js"),
+  entry: path.resolve(__dirname, "./app/index.js"),
   output: {
     path: path.resolve(__dirname + "../../../build/public"),
     // publicPath: "/",
