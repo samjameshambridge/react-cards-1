@@ -17,18 +17,18 @@ module.exports = {
     new webpack.ProvidePlugin({
       gsap: "gsap",
     }),
-    new HtmlWebPackPlugin({
-      cache: false,
-      filename: "index.html",
-      inject: true,
-      minify: true,
-      meta: {
-        content:
-          "width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no",
-      },
-      template: "./app/html-template/index.html",
-      title: "React Cards",
-    }),
+    // new HtmlWebPackPlugin({
+    //   cache: false,
+    //   filename: "index.html",
+    //   inject: true,
+    //   minify: true,
+    //   meta: {
+    //     content:
+    //       "width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no",
+    //   },
+    //   template: "./app/html-template/index.html",
+    //   title: "React Cards",
+    // }),
   ],
   module: {
     rules: [
