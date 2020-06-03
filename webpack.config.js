@@ -4,9 +4,9 @@ const path = require("path");
 const webpack = require("webpack");
 
 module.exports = {
-  entry: path.resolve(__dirname, "./app/index.js"),
+  entry: path.resolve(__dirname, "./src/app/index.js"),
   output: {
-    path: path.resolve(__dirname + "../../../build/public"),
+    path: path.resolve(__dirname + "./build/public"),
     // publicPath: "/",
     filename: "js/bundle.js",
   },
@@ -26,7 +26,7 @@ module.exports = {
         content:
           "width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no",
       },
-      template: "./app/html-template/index.html",
+      template: "./src/app/html-template/index.html",
       title: "React Cards",
     }),
   ],
