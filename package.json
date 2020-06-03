@@ -8,7 +8,8 @@
     "git": "git add *; git commit -am 'commit'",
     "git_deploy": "npm run git && git push heroku master",
     "lint": "eslint './src/server/**/*.ts'",
-    "start": "node ./build/server/server.js"
+    "start": "node ./build/server/server.js",
+    "postinstall": "cd src/client && npm install && npm run build"
   },
   "author": "",
   "license": "ISC",
