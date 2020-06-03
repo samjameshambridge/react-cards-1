@@ -1,5 +1,5 @@
 // const HtmlWebPackPlugin = require("html-webpack-plugin");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+// const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const path = require("path");
 const webpack = require("webpack");
 
@@ -11,9 +11,9 @@ module.exports = {
     filename: "js/bundle.js",
   },
   plugins: [
-    new MiniCssExtractPlugin({
-      filename: "css/style.css",
-    }),
+    // new MiniCssExtractPlugin({
+    //   filename: "css/style.css",
+    // }),
     new webpack.ProvidePlugin({
       gsap: "gsap",
     }),
@@ -44,10 +44,10 @@ module.exports = {
           },
         ],
       },
-      {
-        test: /\.css$/,
-        use: [MiniCssExtractPlugin.loader, "css-loader"],
-      },
+      // {
+      //   test: /\.css$/,
+      //   use: [MiniCssExtractPlugin.loader, "css-loader"],
+      // },
     ],
   },
 };
