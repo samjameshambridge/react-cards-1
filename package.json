@@ -9,8 +9,7 @@
     "git_deploy": "npm run git && git push heroku master",
     "lint": "eslint './src/server/**/*.ts'",
     "start": "node ./build/server/server.js",
-    "postinstall": "cd src/client && npm install",
-    "postbuild": "cd src/client/app && npm run build"
+    "postinstall": "cd src/client && npm install && npm run build"
   },
   "author": "",
   "license": "ISC",
