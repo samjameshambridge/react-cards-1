@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "build": "tsc",
     "git": "git add *; git commit -am 'commit'",
     "git_deploy": "npm run git && git push heroku master",
     "lint": "eslint './src/server/**/*.ts'",
