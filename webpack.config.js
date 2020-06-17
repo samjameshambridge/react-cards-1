@@ -4,7 +4,7 @@ const path = require("path");
 const webpack = require("webpack");
 
 module.exports = {
-  entry: path.resolve(__dirname, "./src/index.tsx"),
+  entry: path.resolve(__dirname, "./src/typescript/index.tsx"),
   output: {
     filename: "js/bundle.js",
     path: __dirname + "/build",
