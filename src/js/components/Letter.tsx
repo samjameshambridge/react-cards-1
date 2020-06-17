@@ -1,12 +1,23 @@
 import React from "react";
 import styled from "styled-components";
+import { DefaultTheme, SecondaryTheme } from "../types/interfaces";
+
+interface StylingLetterProps {
+  defaultTheme: DefaultTheme;
+  mouseOver: boolean;
+  secondaryTheme: SecondaryTheme;
+}
+
+interface FullLetterProps extends StylingLetterProps {
+  letter: string;
+}
 
 const LetterS = styled.span`
   color: ${({
     defaultTheme: { txtColor },
     mouseOver,
     secondaryTheme: { secondaryColor },
-  }) => (mouseOver ? secondaryColor : txtColor)};
+  }: StylingLetterProps) => (mouseOver ? secondaryColor : txtColor)};
   font-size: 138.6px;
   right: 20px;
   position: absolute;
@@ -14,7 +25,12 @@ const LetterS = styled.span`
   transition: color 0.3s ease;
 `;
 
-function Letter({ defaultTheme, letter, mouseOver, secondaryTheme }) {
+function Letter({
+  defaultTheme,
+  letter,
+  mouseOver,
+  secondaryTheme,
+}: FullLetterProps) {
   return (
     <LetterS
       mouseOver={mouseOver}

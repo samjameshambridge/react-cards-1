@@ -1,10 +1,18 @@
 import React from "react";
 import styled from "styled-components";
+import { DefaultTheme } from "../types/interfaces";
+
+interface ArrowStylingProps {
+  defaultTheme: DefaultTheme;
+  mouseOver: boolean;
+}
 
 const ArrowS = styled.svg`
   bottom: 22px;
-  color: ${({ defaultTheme: { borderColor, txtColorHover }, mouseOver }) =>
-    mouseOver ? txtColorHover : borderColor};
+  color: ${({
+    defaultTheme: { borderColor, txtColorHover },
+    mouseOver,
+  }: ArrowStylingProps) => (mouseOver ? txtColorHover : borderColor)};
   fill: currentcolor;
   height: 16px;
   position: absolute;
@@ -12,7 +20,7 @@ const ArrowS = styled.svg`
   width: 36px;
 `;
 
-export default function Arrow({ defaultTheme, mouseOver }) {
+export default function Arrow({ defaultTheme, mouseOver }: ArrowStylingProps) {
   return (
     <ArrowS
       defaultTheme={defaultTheme}

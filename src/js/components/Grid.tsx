@@ -1,20 +1,29 @@
 import React from "react";
 import styled from "styled-components";
 
+import { SecondaryTheme } from "../types/interfaces";
+
+interface GridStylingProps {
+  mouseOver: boolean;
+  secondaryTheme: SecondaryTheme;
+}
+
 const GridS = styled.svg`
   color: rgb(44, 45, 72);
   display: block;
   height: 90px;
   right: 20px;
   position: absolute;
-  stroke: ${({ mouseOver, secondaryTheme: { secondaryColor } }) =>
-    mouseOver ? secondaryColor : "rgb(209, 189, 170)"};
+  stroke: ${({
+    mouseOver,
+    secondaryTheme: { secondaryColor },
+  }: GridStylingProps) => (mouseOver ? secondaryColor : "rgb(209, 189, 170)")};
   transition: stroke 0.3s ease;
   top: 30px;
   width: 90px;
 `;
 
-function Grid({ mouseOver, secondaryTheme }) {
+function Grid({ mouseOver, secondaryTheme }: GridStylingProps) {
   return (
     <GridS
       mouseOver={mouseOver}

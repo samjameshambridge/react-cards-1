@@ -1,4 +1,5 @@
 import React, { Component, createRef } from "react";
+import * as gsap from "gsap";
 import styled from "styled-components";
 
 import Arrow from "./Arrow";
@@ -8,12 +9,33 @@ import Img from "./Img";
 import Letter from "./Letter";
 import Title from "./Title";
 
+import { CardInfo, DefaultTheme, SecondaryTheme } from "../types/interfaces";
+
+interface BaseStylingProps {
+  defaultTheme?: DefaultTheme;
+  mouseOver: boolean;
+}
+
+interface CardStylingProps extends BaseStylingProps {
+  secondaryTheme: SecondaryTheme;
+}
+
+interface CardProps {
+  content: CardInfo;
+}
+
+interface CardState {
+  mouseOver: boolean;
+}
+
 const CardWrapper = styled.div`
   height: 336px;
-  margin: 20px 50px;
+  margin: 10px 20px;
   perspective: 500px;
   position: relative;
-  transform: translateZ(0px);
+  transform: ${({ mouseOver }: BaseStylingProps) =>
+    mouseOver ? "scale(1.03) translateZ(0px)" : "scale(1) translateZ(0px)"};
+  transition: transform ease 0.5s;
   width: 309px;
 `;
 
@@ -22,18 +44,18 @@ const CardBody = styled.div`
     defaultTheme: { bgColor },
     mouseOver,
     secondaryTheme: { primaryColor },
-  }) => (mouseOver ? primaryColor : bgColor)};
+  }: CardStylingProps) => (mouseOver ? primaryColor : bgColor)};
   border-width: 1px;
   border-style: solid;
   border-color: ${({
     defaultTheme: { borderColor },
     mouseOver,
     secondaryTheme: { secondaryColor },
-  }) => (mouseOver ? secondaryColor : borderColor)};
+  }: CardStylingProps) => (mouseOver ? secondaryColor : borderColor)};
   border-radius: 15px;
   display: flex;
   flex-flow: column nowrap;
-  height: 336px;
+  height: 100%;
   padding: 20px;
   position: relative;
   outline-color: rgb(44, 45, 72);
@@ -41,22 +63,22 @@ const CardBody = styled.div`
   transition: background 0.6s cubic-bezier(0.165, 0.84, 0.44, 1) 0s,
     border 0.6s cubic-bezier(0.165, 0.84, 0.44, 1) 0s,
     color 0.6s cubic-bezier(0.165, 0.84, 0.44, 1) 0s;
-  width: 309px;
+  width: 100%;
   z-index: 1;
 `;
 
 const ShadowS = styled.div`
-  background: ${({ defaultTheme: { shadowColor } }) =>
+  background: ${({ defaultTheme: { shadowColor } }: BaseStylingProps) =>
     shadowColor ? shadowColor : ""};
   border-radius: 15px;
   content: "hello";
   display: block;
   height: 302px;
   position: absolute;
-  bottom: ${({ mouseOver }) => (mouseOver ? "-7px" : "0px")};
+  bottom: ${({ mouseOver }: BaseStylingProps) => (mouseOver ? "-7px" : "0px")};
   transform: translate(0px, 0px);
   transition: bottom 0.6s ease, right 0.6s ease;
-  right: ${({ mouseOver }) => (mouseOver ? "-7px" : "0px")};
+  right: ${({ mouseOver }: BaseStylingProps) => (mouseOver ? "-7px" : "0px")};
   width: 278px;
   z-index: -1;
 `;
@@ -66,13 +88,16 @@ const ImgWrapper = styled.div`
   width: 100%;
 `;
 
-export default class Card extends Component {
-  constructor(props) {
+export default class Card extends Component<CardProps, CardState> {
+  private cardBodyRef: React.RefObject<HTMLDivElement>;
+  private cardWrapperRef: React.RefObject<HTMLDivElement>;
+  private shadowRef: React.RefObject<HTMLDivElement>;
+
+  public constructor(props: CardProps) {
     super(props);
 
     // dom references
     this.cardBodyRef = createRef();
-    this.cardWrapperRef = createRef();
     this.shadowRef = createRef();
 
     this.state = {
@@ -88,33 +113,18 @@ export default class Card extends Component {
 
       this.animate3dRotation(rotateElems);
     }
-
-    this.animateScale(this.cardWrapperRef.current, mouseOver);
   }
 
-  animate3dRotation(elems) {
+  animate3dRotation(elems: Array<Element>) {
     var {
       gsap: { timeline },
     } = gsap;
+    // @ts-ignore
     var tl = new timeline();
 
-    tl.to(elems, { duration: 0.18, rotationX: "-6deg" })
-      .to(elems, { duration: 0.3, rotationX: "0.85deg" })
+    tl.to(elems, { duration: 0.18, rotationX: "-8deg" })
+      .to(elems, { duration: 0.3, rotationX: "1deg" })
       .to(elems, { duration: 0.15, rotationX: "0deg" });
-  }
-
-  animateScale(elems, mouseOver) {
-    var {
-      gsap: { timeline },
-    } = gsap;
-    var tl = new timeline();
-
-    if (mouseOver) {
-      tl.to(elems, { duration: 0.45, scale: 1.035 });
-      tl.to(elems, { duration: 0.325, scale: 1.03 });
-    } else {
-      tl.to(elems, { duration: 0.3, scale: 1 });
-    }
   }
 
   onMouseStateChange() {
@@ -139,9 +149,9 @@ export default class Card extends Component {
 
     return (
       <CardWrapper
-        ref={this.cardWrapperRef}
         onMouseEnter={() => this.onMouseStateChange()}
         onMouseLeave={() => this.onMouseStateChange()}
+        mouseOver={mouseOver}
       >
         <CardBody
           ref={this.cardBodyRef}
@@ -159,12 +169,8 @@ export default class Card extends Component {
             />
             <Img top={imgTop} right={imgRight} img={img} />
           </ImgWrapper>
-          <Title
-            title={title}
-            defaultTheme={defaultTheme}
-            mouseOver={mouseOver}
-          />
-          <Info defaultTheme={defaultTheme} info={info} mouseOver={mouseOver} />
+          <Title title={title} mouseOver={mouseOver} />
+          <Info info={info} mouseOver={mouseOver} />
           <Arrow defaultTheme={defaultTheme} mouseOver={mouseOver} />
         </CardBody>
         <ShadowS

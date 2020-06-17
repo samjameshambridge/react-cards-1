@@ -1,4 +1,6 @@
-const theme = {
+import { DefaultTheme } from "../types/interfaces";
+
+const theme: DefaultTheme = {
   bgColor: "rgb(237, 223, 209)",
   borderColor: "rgb(209, 189, 170)",
   shadowColor: "rgb(237, 223, 209)",

@@ -1,12 +1,14 @@
 {
   "compilerOptions": {
-    "sourceMap": false,
-    "target": "es6",
+    "allowSyntheticDefaultImports": true,
+    "outDir": "./dist/",
+    "sourceMap": true,
+    "noImplicitAny": true,
     "module": "commonjs",
-    "outDir": "./build/server",
-    "baseUrl": "./src",
+    "target": "es6",
+    "jsx": "react",
     "esModuleInterop": true
   },
-  "include": ["src/**/*.ts"],
-  "exclude": ["node_modules, build"]
+  "include": ["src/**/*"],
+  "exculde": ["node_modules", "build"]
 }

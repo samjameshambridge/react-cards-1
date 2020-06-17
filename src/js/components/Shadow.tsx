@@ -1,6 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 
+interface ShadowFullProps {
+  mouseOver: boolean;
+}
+
 const ShadowS = styled.div`
   background: rgb(237, 223, 209);
   border-radius: 15px;
@@ -8,13 +12,13 @@ const ShadowS = styled.div`
   display: block;
   height: 302px;
   position: absolute;
-  bottom: ${({ mouseOver }) => (mouseOver ? "-7px" : "0px")};
+  bottom: ${({ mouseOver }: ShadowFullProps) => (mouseOver ? "-7px" : "0px")};
   transition: bottom 0.6s ease, right 0.6s ease;
-  right: ${({ mouseOver }) => (mouseOver ? "-7px" : "0px")};
+  right: ${({ mouseOver }: ShadowFullProps) => (mouseOver ? "-7px" : "0px")};
   width: 278px;
   z-index: -1;
 `;
 
-export default function Shadow({ mouseOver }) {
+export default function Shadow({ mouseOver }: ShadowFullProps) {
   return <ShadowS mouseOver={mouseOver} />;
 }

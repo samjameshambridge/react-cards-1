@@ -4,34 +4,17 @@ const path = require("path");
 const webpack = require("webpack");
 
 module.exports = {
-  entry: path.resolve(__dirname, "./src/app/index.js"),
+  entry: path.resolve(__dirname, "./src/index.tsx"),
   output: {
-    path: path.resolve(__dirname + "./build/public"),
-    // publicPath: "/",
     filename: "js/bundle.js",
+    path: __dirname + "/build",
   },
-  plugins: [
-    new MiniCssExtractPlugin({
-      filename: "css/style.css",
-    }),
-    new webpack.ProvidePlugin({
-      gsap: "gsap",
-    }),
-    new HtmlWebPackPlugin({
-      cache: false,
-      filename: "index.html",
-      inject: true,
-      minify: true,
-      meta: {
-        content:
-          "width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no",
-      },
-      template: "./src/app/html-template/index.html",
-      title: "React Cards",
-    }),
-  ],
+  resolve: {
+    extensions: [".ts", ".tsx", ".js"],
+  },
   module: {
     rules: [
+      { test: /\.tsx|\.ts?$/, loader: "ts-loader" },
       {
         test: /\.js$/,
         exclude: /node_modules/,
@@ -50,4 +33,21 @@ module.exports = {
       },
     ],
   },
+  plugins: [
+    new MiniCssExtractPlugin({
+      filename: "css/style.css",
+    }),
+    new HtmlWebPackPlugin({
+      cache: false,
+      filename: "index.html",
+      inject: true,
+      minify: true,
+      meta: {
+        content:
+          "width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no",
+      },
+      template: "./src/html-template/index.html",
+      title: "React Cards",
+    }),
+  ],
 };
