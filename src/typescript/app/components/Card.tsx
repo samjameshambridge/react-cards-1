@@ -90,14 +90,15 @@ const ImgWrapper = styled.div`
 `;
 
 export default class Card extends Component<CardProps, CardState> {
-  state: {
-    mouseOver: false;
-  };
   cardBodyRef: React.RefObject<HTMLDivElement>;
   shadowRef: React.RefObject<HTMLDivElement>;
 
   constructor(props: CardProps) {
     super(props);
+
+    this.state = {
+      mouseOver: false,
+    };
 
     this.cardBodyRef = createRef();
     this.shadowRef = createRef();
