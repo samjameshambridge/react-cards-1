@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ReactElement } from "react";
 import styled from "styled-components";
 import { DefaultTheme } from "../types/interfaces";
 
@@ -20,7 +20,10 @@ const ArrowS = styled.svg`
   width: 36px;
 `;
 
-export default function Arrow({ defaultTheme, mouseOver }: ArrowStylingProps) {
+export default function Arrow({
+  defaultTheme,
+  mouseOver,
+}: ArrowStylingProps): ReactElement {
   return (
     <ArrowS
       defaultTheme={defaultTheme}

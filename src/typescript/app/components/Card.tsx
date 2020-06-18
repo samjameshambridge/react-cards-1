@@ -29,13 +29,14 @@ interface CardState {
 }
 
 const CardWrapper = styled.div`
+  cursor: hover;
   height: 336px;
   margin: 10px 20px;
   perspective: 500px;
   position: relative;
   transform: ${({ mouseOver }: BaseStylingProps) =>
-    mouseOver ? "scale(1.03) translateZ(0px)" : "scale(1) translateZ(0px)"};
-  transition: transform ease 0.5s;
+    mouseOver ? "scale(1.08) translateZ(0px)" : "scale(1) translateZ(0px)"};
+  transition: transform ease 0.25s;
   width: 309px;
 `;
 
@@ -89,20 +90,17 @@ const ImgWrapper = styled.div`
 `;
 
 export default class Card extends Component<CardProps, CardState> {
-  private cardBodyRef: React.RefObject<HTMLDivElement>;
-  private cardWrapperRef: React.RefObject<HTMLDivElement>;
-  private shadowRef: React.RefObject<HTMLDivElement>;
+  state: {
+    mouseOver: false;
+  };
+  cardBodyRef: React.RefObject<HTMLDivElement>;
+  shadowRef: React.RefObject<HTMLDivElement>;
 
-  public constructor(props: CardProps) {
+  constructor(props: CardProps) {
     super(props);
 
-    // dom references
     this.cardBodyRef = createRef();
     this.shadowRef = createRef();
-
-    this.state = {
-      mouseOver: false,
-    };
   }
 
   componentDidUpdate() {

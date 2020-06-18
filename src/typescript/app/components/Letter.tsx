@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ReactElement } from "react";
 import styled from "styled-components";
 import { DefaultTheme, SecondaryTheme } from "../types/interfaces";
 
@@ -30,7 +30,7 @@ function Letter({
   letter,
   mouseOver,
   secondaryTheme,
-}: FullLetterProps) {
+}: FullLetterProps): ReactElement {
   return (
     <LetterS
       mouseOver={mouseOver}

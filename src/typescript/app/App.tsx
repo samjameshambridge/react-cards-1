@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ReactElement } from "react";
 import styled from "styled-components";
 
 import Card from "./components/Card";
@@ -14,7 +14,7 @@ const Wrapper = styled.div`
   width: 100vw;
 `;
 
-export default function App() {
+export default function App(): ReactElement {
   return (
     <Wrapper>
       {CardContent.map((curr: CardInfo, index) => (

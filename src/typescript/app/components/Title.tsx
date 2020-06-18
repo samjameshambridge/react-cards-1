@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ReactElement } from "react";
 import styled from "styled-components";
 
 interface TitleStylingProps {
@@ -17,11 +17,9 @@ const TitleS = styled.h1`
   transition: color 0.3s ease;
 `;
 
-interface TitleProps {
-  mouseOver: boolean;
-  title: string;
-}
-
-export default function Title({ mouseOver, title }: TitleProps) {
+export default function Title({
+  mouseOver,
+  title,
+}: TitleFullProps): ReactElement {
   return <TitleS mouseOver={mouseOver}>{title}</TitleS>;
 }

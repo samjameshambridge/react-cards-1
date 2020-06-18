@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ReactElement } from "react";
 import styled from "styled-components";
 
 interface ImgStylingProps {
@@ -17,6 +17,6 @@ const ImgS = styled.img`
   top: ${({ top }: ImgStylingProps) => (top ? top : null)};
 `;
 
-export default function Img({ img, right, top }: ImgFullProps) {
+export default function Img({ img, right, top }: ImgFullProps): ReactElement {
   return <ImgS src={img} right={right} top={top} />;
 }

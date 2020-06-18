@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ReactElement } from "react";
 import styled from "styled-components";
 
 interface ShadowFullProps {
@@ -19,6 +19,6 @@ const ShadowS = styled.div`
   z-index: -1;
 `;
 
-export default function Shadow({ mouseOver }: ShadowFullProps) {
+export default function Shadow({ mouseOver }: ShadowFullProps): ReactElement {
   return <ShadowS mouseOver={mouseOver} />;
 }

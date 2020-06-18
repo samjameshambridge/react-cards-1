@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ReactElement } from "react";
 import styled from "styled-components";
 
 import { SecondaryTheme } from "../types/interfaces";
@@ -23,7 +23,7 @@ const GridS = styled.svg`
   width: 90px;
 `;
 
-function Grid({ mouseOver, secondaryTheme }: GridStylingProps) {
+function Grid({ mouseOver, secondaryTheme }: GridStylingProps): ReactElement {
   return (
     <GridS
       mouseOver={mouseOver}

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ReactElement } from "react";
 import styled from "styled-components";
 
 interface InfoStylingProps {
@@ -16,6 +16,6 @@ const InfoS = styled.p`
   transition: color 0.3s ease;
 `;
 
-export default function Info({ info, mouseOver }: InfoFullProps) {
+export default function Info({ info, mouseOver }: InfoFullProps): ReactElement {
   return <InfoS mouseOver={mouseOver}>{info}</InfoS>;
 }
