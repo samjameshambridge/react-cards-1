@@ -7,7 +7,7 @@ module.exports = {
   entry: path.resolve(__dirname, "./src/typescript/index.tsx"),
   output: {
     filename: "js/bundle.js",
-    path: __dirname + "/build",
+    path: __dirname + "/dist",
   },
   resolve: {
     extensions: [".ts", ".tsx", ".js"],
